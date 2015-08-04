@@ -36,34 +36,24 @@ class Fixnum
     elsif self <= 9
       word = number_names[self]
     elsif number_array.length()>=2
-      tens_place_value = number_names[number_array[1].to_i.*(10)]
-      ones_place_value = number_names[number_array[0].to_i]
-      if number_array.length()>=3
-        hundreds_place_value = number_names[number_array[2].to_i]
-        if number_array.length==4
-          thousands_place_value=number_names[number_array[3].to_i]
-          if number_array[1]=="0" && number_array[2]=="0"
-            if number_array[0]=="0"
-              word = thousands_place_value.concat(" thousand")
-            else
-              word = thousands_place_value.concat(" thousand ").concat(ones_place_value)
-            end
-          elsif number_array[2]=="0" && number_array[1]=="1"
-            word = thousands_place_value.concat(" thousand ").concat(number_names[(self.-(number_array[3].to_i.*(1000)))])
-          end
-        elsif number_array[1]=="1"
-          word = hundreds_place_value.concat(" hundred ").concat(number_names[(self.-(number_array[2].to_i.*(100)))])
-        elsif number_array[1]=="0" && number_array[0]!="0"
-          word = hundreds_place_value.concat(" hundred ").concat(ones_place_value)
-        elsif number_array[0]=="0"
-          word = hundreds_place_value.concat(" hundred")
-        else
-          word = hundreds_place_value.concat(" hundred ").concat(tens_place_value).concat(" ").concat(ones_place_value)
-        end
-      elsif number_array[1]=="1"
-        word = number_names[self]
+      # Define Variables
+      tens = number_names[number_array[1].to_i.*(10)]
+      ones = number_names[number_array[0].to_i]
+      if number_array[1] == "1"
+        teens = number_names[number_array[1].concat(number_array[0]).to_i]
+      end
+      hundreds = number_names[number_array[2].to_i]
+      thousands = number_names[number_array[3].to_i]
+      #Determine values of 2 digits
+      if teens.nil?.!()
+        word_to_tens = teens
+      elsif number_array[0]=="0"
+        word_to_tens = tens
       else
-        word = tens_place_value.concat(" ").concat(ones_place_value)
+        word_to_tens = tens.concat(" ").concat(ones)
+      end
+      if number_array.length==2
+        word = word_to_tens
       end
     end
     word.capitalize!()
