@@ -33,4 +33,12 @@ describe("Fixnum#numbers_to_words") do
   it("returns a value for the number 1000") do
     expect(1000.numbers_to_words).to(eq("One thousand"))
   end
+
+  it("returns a value for numbers between 1001 to 1009") do
+    expect(2004.numbers_to_words).to(eq("Two thousand four"))
+  end
+
+  it("returns a value for 4 digit numbers with and ends in the teens") do
+    expect(6015.numbers_to_words).to(eq("Six thousand fifteen"))
+  end
 end
