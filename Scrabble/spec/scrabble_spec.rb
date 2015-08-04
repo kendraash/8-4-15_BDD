@@ -21,4 +21,8 @@ describe('String#scrabble') do
   it("returns an error message if there is a special character entered") do
     expect("Kendra!".scrabble()).to(eq("Error: you can't do special characters"))
   end
+
+  it("returns an error message if there is a number is entered") do
+    expect("Kendra3".scrabble()).to(eq("Error: you can't do special characters"))
+  end
 end
