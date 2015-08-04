@@ -27,6 +27,8 @@ describe("Fixnum#numbers_to_words") do
   end
 
   it("returns a triple digit number between 100 and 109") do
-    expect(109.numbers_to_words).to(eq("One hundred nine"))
+    expect(100.numbers_to_words).to(eq("One hundred"))
   end
+
+  it("returns a value ")
 end

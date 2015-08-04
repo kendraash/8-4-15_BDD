@@ -42,8 +42,10 @@ class Fixnum
         hundreds_place_value = number_names[number_array[2].to_i]
         if number_array[1]=="1"
           word = hundreds_place_value.concat(" hundred ").concat(number_names[(self.-(number_array[2].to_i.*(100)))])
-        elsif number_array[1]=="0"
+        elsif number_array[1]=="0" && number_array[0]!="0"
           word = hundreds_place_value.concat(" hundred ").concat(ones_place_value)
+        elsif number_array[0]=="0"
+          word = hundreds_place_value.concat(" hundred")
         else
           word = hundreds_place_value.concat(" hundred ").concat(tens_place_value).concat(" ").concat(ones_place_value)
         end
