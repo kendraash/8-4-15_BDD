@@ -32,29 +32,27 @@ class Fixnum
 
     number_array=self.to_s.split("").reverse!
     if self == 0
-      "Zero"
+      word = "Zero"
     elsif self <= 9
-      number_names[self].capitalize!()
+      word = number_names[self]
     elsif number_array.length()==2
+      tens_place_value = number_names[number_array[1].to_i.*(10)]
+      ones_place_value = number_names[number_array[0].to_i]
       if number_array[1]=="1"
-        number_names[self].capitalize!()
+        word = number_names[self]
       else
-        tens_place_value = number_names[number_array[1].to_i.*(10)]
-        ones_place_value = number_names[number_array[0].to_i]
-        tens_place_value.concat(" ").concat(ones_place_value).capitalize!()
+        word = tens_place_value.concat(" ").concat(ones_place_value)
       end
     elsif number_array.length()==3
       hundreds_place_value = number_names[number_array[2].to_i]
       if number_array[1]=="1"
-        hundreds_place_value.concat(" hundred ").concat(number_names[(self.-(number_array[2].to_i.*(100)))]).capitalize!()
+        word = hundreds_place_value.concat(" hundred ").concat(number_names[(self.-(number_array[2].to_i.*(100)))])
       elsif number_array[1]=="0"
-        ones_place_value = number_names[number_array[0].to_i]
-        hundreds_place_value.concat(" hundred ").concat(ones_place_value).capitalize!()
+        word = hundreds_place_value.concat(" hundred ").concat(ones_place_value)
       else
-        tens_place_value = number_names[number_array[1].to_i.*(10)]
-        ones_place_value = number_names[number_array[0].to_i]
-        hundreds_place_value.concat(" hundred ").concat(tens_place_value).concat(" ").concat(ones_place_value).capitalize!()
+        word = hundreds_place_value.concat(" hundred ").concat(tens_place_value).concat(" ").concat(ones_place_value)
       end
     end
+    word.capitalize!()
   end
 end
