@@ -21,4 +21,11 @@ describe("Fixnum#numbers_to_words") do
   it("returns a triple digit number as a word description string") do
     expect(117.numbers_to_words).to(eq("One hundred seventeen"))
   end
+
+  it("returns a triple digit number between 120 and 999") do
+    expect(129.numbers_to_words).to(eq("One hundred twenty nine"))
+  end
+  it("returns a triple digit number between 100 and 109") do
+    expect(109.numbers_to_words).to(eq("One hundred nine"))
+  end
 end

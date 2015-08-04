@@ -30,26 +30,29 @@ class Fixnum
       90 => "ninety"
     }
 
-    number_array=self.to_s.split("")
+    number_array=self.to_s.split("").reverse!
     if self == 0
       "Zero"
     elsif self <= 9
       number_names[self].capitalize!()
     elsif number_array.length()==2
-      if number_array[0]=="1"
+      if number_array[1]=="1"
         number_names[self].capitalize!()
       else
-        tens_place_value = number_names[number_array[0].to_i.*(10)]
-        ones_place_value = number_names[number_array[1].to_i]
+        tens_place_value = number_names[number_array[1].to_i.*(10)]
+        ones_place_value = number_names[number_array[0].to_i]
         tens_place_value.concat(" ").concat(ones_place_value).capitalize!()
       end
     elsif number_array.length()==3
-      hundreds_place_value = number_names[number_array[0].to_i]
+      hundreds_place_value = number_names[number_array[2].to_i]
       if number_array[1]=="1"
-        hundreds_place_value.concat(" hundred ").concat(number_names[(self.-(number_array[0].to_i.*(100)))]).capitalize!()
+        hundreds_place_value.concat(" hundred ").concat(number_names[(self.-(number_array[2].to_i.*(100)))]).capitalize!()
+      elsif number_array[1]=="0"
+        ones_place_value = number_names[number_array[0].to_i]
+        hundreds_place_value.concat(" hundred ").concat(ones_place_value).capitalize!()
       else
         tens_place_value = number_names[number_array[1].to_i.*(10)]
-        ones_place_value = number_names[number_array[2].to_i]
+        ones_place_value = number_names[number_array[0].to_i]
         hundreds_place_value.concat(" hundred ").concat(tens_place_value).concat(" ").concat(ones_place_value).capitalize!()
       end
     end
