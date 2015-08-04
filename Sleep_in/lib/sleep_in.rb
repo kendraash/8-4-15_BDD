@@ -5,20 +5,20 @@ class String
     day=date_array[1]
     year=date_array[2]
     date_format=Time.new(year,month,day)
-    dow=date_format.wday()
-    if dow==0
+    day_of_week=date_format.wday()
+    if day_of_week==0
       "Today is Sunday you can sleep in"
-    elsif dow==1
+    elsif day_of_week==1
       "Monday"
-    elsif dow==2
+    elsif day_of_week==2
       "Tuesday"
-    elsif dow==3
+    elsif day_of_week==3
       "Wednesday"
-    elsif dow==4
+    elsif day_of_week==4
       "Thursday"
-    elsif dow==5
+    elsif day_of_week==5
       "Friday"
-    elsif dow==6
+    elsif day_of_week==6
       "Today is Saturday you can sleep in"
     end
   end
