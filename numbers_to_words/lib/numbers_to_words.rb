@@ -44,7 +44,8 @@ class Fixnum
       end
       hundreds = number_names[number_array[2].to_i]
       thousands = number_names[number_array[3].to_i]
-      #Determine values of 2 digits
+
+      # Determine values of 2 digits
       if teens.nil?.!()
         word_to_tens = teens
       elsif number_array[0]=="0"
@@ -54,6 +55,18 @@ class Fixnum
       end
       if number_array.length==2
         word = word_to_tens
+      end
+
+      # Determine values of 3 digits
+      if number_array.length>=3
+        if number_array[0]=="0" && number_array[1]=="0"
+          word = hundreds.concat(" hundred")
+        else
+          word_to_hundreds=hundreds.concat(" hundred ").concat(word_to_tens)
+          if number_array.length==3
+            word = word_to_hundreds
+          end
+        end
       end
     end
     word.capitalize!()
