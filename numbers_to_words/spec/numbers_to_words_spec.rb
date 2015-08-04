@@ -17,4 +17,8 @@ describe("Fixnum#numbers_to_words") do
   it("returns a double digit number up to 99") do
     expect(79.numbers_to_words).to(eq("Seventy nine"))
   end
+
+  it("returns a triple digit number as a word description string") do
+    expect(117.numbers_to_words).to(eq("One hundred seventeen"))
+  end
 end
