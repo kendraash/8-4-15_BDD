@@ -7,7 +7,7 @@ class String
     date_format=Time.new(year,month,day)
     dow=date_format.wday()
     if dow==0
-      "Sunday"
+      "Today is Sunday you can sleep in"
     elsif dow==1
       "Monday"
     elsif dow==2
@@ -19,7 +19,7 @@ class String
     elsif dow==5
       "Friday"
     elsif dow==6
-      "Saturday"
+      "Today is Saturday you can sleep in"
     end
   end
 end
