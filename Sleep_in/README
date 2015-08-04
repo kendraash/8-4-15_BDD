@@ -1,0 +1,20 @@
+# Sleep_in
+##### This program takes dates and will output the day of the week and whether or not you can sleep in. Last version - 8/4/15
+
+####By Kendra Ash and Kyle Mellander
+
+##Description
+
+  This program takes the date formatted as a string (MM/DD/YYYY) and outputs the day of the week.  On the weekends it will tell you that you can sleep in.
+
+##Setup
+
+  Download and run in Ruby.
+
+##Technologies Used
+
+  Ruby
+
+##Legal
+
+Open Source - Use at your own risk!
