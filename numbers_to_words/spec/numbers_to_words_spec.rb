@@ -30,5 +30,7 @@ describe("Fixnum#numbers_to_words") do
     expect(100.numbers_to_words).to(eq("One hundred"))
   end
 
-  it("returns a value ")
+  it("returns a value for the number 1000") do
+    expect(1000.numbers_to_words).to(eq("One thousand"))
+  end
 end

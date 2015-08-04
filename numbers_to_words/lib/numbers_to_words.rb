@@ -38,9 +38,14 @@ class Fixnum
     elsif number_array.length()>=2
       tens_place_value = number_names[number_array[1].to_i.*(10)]
       ones_place_value = number_names[number_array[0].to_i]
-      if number_array.length()==3
+      if number_array.length()>=3
         hundreds_place_value = number_names[number_array[2].to_i]
-        if number_array[1]=="1"
+        if number_array.length==4
+          thousands_place_value=number_names[number_array[3].to_i]
+          if number_array[0]=="0" && number_array[1]=="0" && number_array[2]=="0"
+            word = thousands_place_value.concat(" thousand")
+          end
+        elsif number_array[1]=="1"
           word = hundreds_place_value.concat(" hundred ").concat(number_names[(self.-(number_array[2].to_i.*(100)))])
         elsif number_array[1]=="0" && number_array[0]!="0"
           word = hundreds_place_value.concat(" hundred ").concat(ones_place_value)
